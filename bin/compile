@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+BIN_DIR=$(cd $(dirname $0); pwd)
+ROOT_DIR=$(dirname $BIN_DIR)
+PERL=`which perl`
+
+echo "-----> Found an index.md"
+echo "-----> Markdown to HTML"
+
+MARKDOWN_FILES=`find $1 -name "*.md"`
+
+for f in $MARKDOWN_FILES; do
+  NEWFILE=${f%.*}.html
+  echo "       $f -> $NEWFILE"
+  echo -e "<html>\n<body>" > $NEWFILE
+  $PERL $ROOT_DIR/opt/Markdown.pl $f >> $NEWFILE
+  echo -e "</body>\n</html>" >> $NEWFILE
+  rm $f
+done 
