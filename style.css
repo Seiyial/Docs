@@ -2,7 +2,7 @@
 
 /* https://coolors.co/114b5f-028090-e4fde1-456990-f45b69 */
 --root {
-	--color-1: #26405B; /* Japanese Indigo | Primary Color */
+	--color-1: #34567A; /* B'Dazzled Blue | Primary Color */
 	--color-2: #F45B69; /* Fiery Rose | Secondary Color */
 	--color-3: #028090; /* Metallic Seaweed | Tertiary color */
 	--color-4: #C9FFF6; /* Aero Blue | Code/Quote Background */
@@ -22,4 +22,20 @@ body {
 
 code {
 	background-color: var(--color-4);
+	font-family: 'Anonymous Pro', 'Fira Code', 'Fira Mono', 'PT Mono', 'Lucida Console', Monospace;
+}
+
+pre code {
+	display: block;
+	background-color: var(--color-4);
+}
+
+a {
+	color: var(--color-2);
+	text-decoration: none;
+	animation: all .08s ease-in;
+}
+
+a:hover {
+	text-decoration: underline;
 }
