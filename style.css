@@ -2,11 +2,14 @@
 
 /* https://coolors.co/114b5f-028090-e4fde1-456990-f45b69 */
 html {
-	
-
 }
 
 body {
+	padding: calc(20px + 5vh) calc(20px + 5vw);
+	width: 100vw;
+	max-width: 1024px;
+	min-height: 100vh;
+
 	--color-1: #34567A; /* B'Dazzled Blue | Primary Color */
 	--color-2: #F45B69; /* Fiery Rose | Secondary Color */
 	--color-3: #028090; /* Metallic Seaweed | Tertiary color */
