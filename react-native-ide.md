@@ -33,9 +33,11 @@ $ xcode-select --install
 
 
 
-### Install Android Studio
+### Android Emulator
 
-Required for Android Emulator.
+###### 1. Android Studio
+
+First you ***need*** to install Android Studio.
 
 [Download from this Link](https://developer.android.com/studio/) or google.
 
@@ -47,15 +49,13 @@ Then:
 2. Then tools > AVD Manager > Create a new emulator based on your likes.
 3. Preferably 1 high end, 1 middle, one small ass screen
 
+To run the emulator, double click the item in the list. 
 
-
-### Android Building
+###### 2. Java
 
 Ensure Java is Installed.
 
 ```bash
 $ java -version # 1.8 is java 8
 ```
-
-
 
