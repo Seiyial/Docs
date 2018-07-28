@@ -26,7 +26,7 @@ kiex use 1.7.1
 kiex default 1.7.1
 ```
 
-## Install Node (NVM and yarn)
+## Install Node (NVM and yarnpkg)
 
 ```bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
