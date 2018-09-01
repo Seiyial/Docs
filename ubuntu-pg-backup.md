@@ -27,7 +27,11 @@ psql -d backup_database -f ~/MyDocuments/backup_name.bak
 
 Done!
 
-## Stop using the postgres user (BEST MANUAL METHOD)
+
+
+## Stop using the postgres user
+
+(last time it didn't work tho)
 
 ```bash
 ssh awesomeserver

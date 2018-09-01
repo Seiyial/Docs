@@ -1,4 +1,4 @@
-# Remember these Elixir Stuffs
+# Elixir Cheatsheet
 
 
 
@@ -54,6 +54,8 @@ Map.replace!(%{a: "b", c: "d"}, c: "f")
 #### Remove & Delete
 
 ```elixir
+# 1: delete; >1: drop
+
 Map.delete(%{a: "b", c: "d"}, :c)
 # => %{a: "b"}
 

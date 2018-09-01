@@ -12,18 +12,18 @@ ssh root@the-ip-address -i /path/to/private_key
 
 Add User
 ```
-adduser Seiyial
+adduser seiyial
 ```
 
 Delete User
 ```
-deluser Seiyial
+deluser seiyial
 ```
 
 Give Sudo Perms
 ```
 # on root
-usermod -aG sudo Seiyial
+usermod -aG sudo seiyial
 ```
 
 ### Setting up SSH Access for User
@@ -55,6 +55,7 @@ sudo apt update
 # sudo apt upgrade
 sudo apt install build-essential
 ```
+
 
 
 ## Installing the Languages
