@@ -1,4 +1,8 @@
-# Setting up a React Native IDE
+# REACT NATIVE GUIDE
+
+## 1. Setting up a React Native IDE
+
+This guide is written for iOS. For you if you're serious about bringing your React Native App to production.
 
 ### Pre-Requisites
 
@@ -13,11 +17,12 @@
 
 
 
-### Install React Native
+### Install the CLIs
 
 ```bash
 $ brew install watchman
-$ yarn global add react-native-cli # creates the *correct* `react-native` script
+$ yarn global add react-native-cli create-react-native-app # not `react-native`
+$ gem install cocoapods # requires RubyGems installed; may not be required if you're using create-react-native-app all the way
 ```
 
 
@@ -58,4 +63,48 @@ Ensure Java is Installed.
 ```bash
 $ java -version # 1.8 is java 8
 ```
+
+
+
+## 2. Creating Your Project 
+
+#### `TYPE 1` (Recommended)
+
+- Best of both worlds (the source world and the Expo world), but not for newbies.
+- You get to use all of Expo's features except the cradle.
+- Ideal for Agile, building as many features as possible.
+
+```bash
+$ create-react-native-app app-name
+$ yarn eject
+> ExpoKit
+$ cd ios
+$ pod install # this may take longer than Rails
+$ cd ..
+$ echo '\n\n# iOS Build/Dependencies\n/ios/pods/' >> .gitignore
+```
+
+#### `TYPE 2`
+
+- For newbies.
+- As easy as easy can get. Well not really, but yeah, as easy as React Native gets.
+- You'll **NOT** be able to use Native Modules.
+
+```bash
+$ create-react-native-app app-name
+```
+
+#### `TYPE 3`
+
+- If you know what you're doing.
+- No Expo. Means no QR Code to Physical Device. Wutt
+- If you need Native Modules, don't need the QR code(!?) and/or need to keep the app bundle really really (?) small.
+
+```bash
+$ react-native init app-name
+```
+
+
+
+
 
