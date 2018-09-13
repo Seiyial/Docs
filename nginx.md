@@ -197,7 +197,9 @@ cd nginx-1.13.1
   --with-debug                       enable debug logging
 ```
 
-### Install NGINX
+
+
+#### Install NGINX
 
 ```bash
 ./configure --with-some_thing --without_some_thing_else --set-something=/to/this/blabla
@@ -208,22 +210,33 @@ make install
 # .. done!
 ```
 
+
+
 #### Default Config
+
 ```bash
-./configure --with-http_ssl_module --with-http_v2_module --with-http_realip_module --conf-path=/root/nginx/nginx-config.conf
+./configure --with-http_ssl_module --with-http_v2_module --with-http_realip_module --conf-path=/usr/local/nginx/conf/nginx.conf
 
 
 ```
 
-## Start NGINX
+
+
+#### Add NGINX to PATH
+
+```bash
+echo 'export PATH=/usr/sbin/nginx:$PATH' >> ~/.bashrc
+export PATH=/usr/sbin/nginx:$PATH
+nginx -t
+```
 
 
 
+#### Add NGINX to `systemd`
 
+File this to `/lib/systemd/system/nginx.service`.
 
-### Add NGINX to Systemd (`systemctl`)
-
-File this to `/lib/systemd/system/nginx.service`
+**Double Check the File Paths based on your `sbin` & PID locations BEFORE SAVING.**
 
 ```service
 [Unit]
@@ -243,8 +256,50 @@ PrivateTmp=true
 WantedBy=multi-user.target
 ```
 
-Change the paths to those listed at the end of ./configure xyz.
+```bash
+systemctl enable nginx
+systemctl status nginx
+```
+
+
+
+## 2. Certbot with NGINX
+
+Untested, but I think it should work
+
+#### Setup
 
 ```bash
-$ systemctl enable nginx
+vim /usr/local/nginx/conf/nginx.conf
+# Try to simplify the file for certbot to better understand
+
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt update
+sudo apt install python-certbot-nginx
+
+# Easy (but nginx.conf should be simple)
+sudo certbot --nginx
+# Handle the file management and NGINX Code yourself
+sudo certbot --nginx certonly
 ```
+
+#### Auto-renewal
+
+Every day you'll simply pester the certbot servers, they'll say "fuk off" for 60+ days but then there'll be this one day your cert gets renewed. And you didn't do anything!
+
+Tech.
+
+```bash
+# do a dry run whenever your NGINX config changed, because.
+sudo certbot renew --dry-run
+
+# Add a CRON Job to Root using
+root~$ crontab -e
+
+# -- Add this line --
+@daily certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+# Check with the guide that the syntax is correct
+```
+

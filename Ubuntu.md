@@ -74,45 +74,59 @@ sudo apt install build-essential erlang
 #### Elixir via Version Manager (Kiex)
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s
-# paste the thing into ~/.bashrc, then ssh in again
+curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s &&
+cat '' >> ~/.bashrc &&
+cat '# KIEX - Elixir Version Manager' >> ~/.bashrc &&
+cat 'test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"' >> ~/.bashrc &&
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 ```
+
+Kiex & Erlang Dump
+
+```
+sudo apt update && sudo apt install build-essential && curl https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb --output erlang.deb && sudo dpkg -i erlang.deb && sudo apt update && sudo apt install build-essential erlang && curl -sSL https://raw.githubusercontent.com/taylor/kiex/master/install | bash -s && cat '' >> ~/.bashrc && cat '# KIEX - Elixir Version Manager' >> ~/.bashrc && cat 'test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"' >> ~/.bashrc && test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+kiex install 1.7.3 && kiex default 1.7.3 && kiex use 1.7.3 && 
+
+```
+
+
 
 ### Node, NPM and Yarn
 
 #### NVM
 
 ```bash
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash && 
 # the initialiser should have been pasted into ~/.bashrc, run the next 3 or restart the connection
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm" && 
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 ```
 
 #### Node & NPM
 
 ```bash
-nvm ls-remote
-nvm ls-remote --lts
-nvm install 8.11.3 # Node 8 LTS
-nvm install 9.11.2 # Node 9 latest
-nvm install 10.6.0
-nvm alias 8 8.11.3
-nvm alias 9 9.11.2
-nvm alias 10 10.6.0
-nvm use 10
+nvm ls-remote && 
+nvm ls-remote --lts && 
+nvm install 8.11.3 && # Node 8 LTS
+nvm install 9.11.2 && # Node 9 latest
+nvm install 10.6.0 &&
+nvm alias 8 8.11.3 &&
+nvm alias 9 9.11.2 &&
+nvm alias 10 10.6.0 &&
+nvm use 10 &&
 node -v
 ```
 
 #### Yarn
 
 ```bash
-sudo apt remove cmdtest # https://github.com/yarnpkg/yarn/issues/2821
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install --no-install-recommends yarn
+sudo apt remove cmdtest && # https://github.com/yarnpkg/yarn/issues/2821 &&
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &&
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee  /etc/apt/sources.list.d/yarn.list &&
+sudo apt update &&
+sudo apt install --no-install-recommends yarn &&
 yarn -v
 
 # intelligentpay
@@ -140,6 +154,8 @@ Access PSQL
 ```bash
 # (need postgres Linux usr acct)
 sudo -i -u postgres
+createuser
+
 psql
 # ... (\q)
 exit
@@ -147,6 +163,14 @@ exit
 # (more efficient way)
 sudo -u postgres psql
 ```
+
+Role Management
+
+```bash
+ALTER ROLE role_name WITH LOGIN CREATEDB;
+```
+
+
 
 ## Routing Port 80 to our App
 

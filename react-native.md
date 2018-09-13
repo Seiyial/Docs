@@ -64,6 +64,12 @@ Ensure Java is Installed.
 $ java -version # 1.8 is java 8
 ```
 
+###### 3. `ANDROID_HOME`
+
+```bash
+$ echo 'export ANDROID_HOME="/Users/Seiyial/Library/Android/sdk" >> ~/.zshrc'
+```
+
 
 
 ## 2. Creating Your Project 
