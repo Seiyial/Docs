@@ -4,7 +4,7 @@
 
 ## Maps
 
-#### Additives
+#### (+) Additives
 
 ```elixir
 Map.put(%{a: "b", c: "d"}, :e, "f")
@@ -32,7 +32,7 @@ Map.merge(%{a: "b", e: "f"}, %{e: "H", i: "j"}, fun(key, v_old, e_new) -> ...)
 
 
 
-#### Update
+#### (Δ) Update
 
 ```elixir
 Map.update(%{a: "b", c: "d", e: "f"}, :a, "g", &(&1 <> "Z"))
@@ -51,7 +51,7 @@ Map.replace!(%{a: "b", c: "d"}, c: "f")
 
 
 
-#### Remove & Delete
+#### ( - ) Remove & Delete
 
 ```elixir
 # 1: delete; >1: drop
@@ -70,7 +70,7 @@ Map.drop(%{a: "b", c: "d", e: "f"}, [:c, :g])
 
 
 
-#### Remove & Extract
+#### (<--) Remove & Extract
 
 ```elixir
 Map.pop(%{a: "b", c: "d"}, :a, "otherwise return this text")
