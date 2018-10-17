@@ -303,3 +303,37 @@ root~$ crontab -e
 # Check with the guide that the syntax is correct
 ```
 
+
+
+## 3. Reverse Proxy
+
+**IN ORDER TO SUPPORT ROUTE MATCHING, YOUR PROXY PASS STRING MUST HAVE A TRAILING SLASH ('/' AT THE END)**
+
+```nginx
+events {}
+
+server {
+    listen 80;
+    location / {
+        add_header Proxy-By nginx # This header is applied when proxy-replying to USER
+        
+        proxy_set_header nginx # This header goes to the PHPServer, the Proxy Child.
+        
+        proxy_pass 'http://localhost:8080/' # PUT IN the trailing slash!!!
+        # Not exactly needed for root but needed for every subpath location
+        # BE CONSISTENT
+        # care, the nginx proxypass location has an extra /.
+    }
+}
+```
+
+
+
+## 4. Adding an NGINX User
+
+```bash
+sudo adduser --system --no-create-home --shell /bin/false --group --disabled-login nginx-worker
+```
+
+
+

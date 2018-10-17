@@ -172,9 +172,9 @@ ALTER ROLE role_name WITH LOGIN CREATEDB;
 
 
 
-## Routing Port 80 to our App
+## Dont use this pls
 
-### Learn your fucking NGINX Sayhao. And IPTABLES
+Deprecate this. We know how to use NGINX now.
 
 ```bash
 sudo iptables -t nat -I PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8873
@@ -185,6 +185,12 @@ sudo iptables -t nat -I OUTPUT -p tcp -o lo --dport 443 -j REDIRECT --to-ports 8
 ```
 
 
+
+## Coloured Root Prompt
+
+```bash
+echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '" >> ~/.bashrc
+```
 
 
 
